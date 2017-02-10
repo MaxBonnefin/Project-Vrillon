@@ -1,0 +1,41 @@
+----------------------------DESIGN
+-horror/action
+-ghosts
+    -can't hurt you
+    -behaviour - wander randomly - chase if disturbed
+-heartbeat
+    -kills you if it reaches certain threshold
+    -increases when a ghost is in view
+    -decreases when a ghost hasn't been in view for x seconds
+-torch
+    -only light source?? maybe lanterns dotted sparsely
+    -conical - controlled by player - l4kdead-esque
+-victory condition
+    -get to ladder at end of each floor
+    -escape mansion after x number floors
+-score calculated from time survived and number of ghosts killed
+----------------------------GFX
+-lo-fi keep it simple
+-basic tileset?
+-player sprite
+    -basic movement animation
+    -death animation
+    -idle animation?
+-ghost sprite
+    -basic movement animation
+    -different chase animation?
+-cool lighting system
+-cool particle effect on ghosts?
+----------------------------SFX
+-heartbeat always playing
+    -speed of playback depending on gameplay
+-ghost noises/spooky sounds
+-death sound
+-one or two basic tracks
+    -suspenseful
+    -more actiony for chase
+-footsteps?
+-menu gui sounds
+-title menu track
+
+
