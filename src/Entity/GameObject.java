@@ -507,7 +507,4 @@ public abstract class GameObject {
         down = b;
     }
 
-    public abstract void calculateKnockback(double newAngle, int i);
-
-    public abstract void hit(int slashDamage);
 }
