@@ -38,6 +38,109 @@ public class GamePanel extends JPanel
         requestFocus();
     }
 
+    @Override
+    public String toString() {
+        return "GamePanel{" +
+                "thread=" + thread +
+                ", running=" + running +
+                ", FPS=" + FPS +
+                ", targetTime=" + targetTime +
+                ", image=" + image +
+                ", g=" + g +
+                ", gsm=" + gsm +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GamePanel)) return false;
+
+        GamePanel gamePanel = (GamePanel) o;
+
+        if (FPS != gamePanel.FPS) return false;
+        if (running != gamePanel.running) return false;
+        if (targetTime != gamePanel.targetTime) return false;
+        if (!g.equals(gamePanel.g)) return false;
+        if (!gsm.equals(gamePanel.gsm)) return false;
+        if (!image.equals(gamePanel.image)) return false;
+        if (!thread.equals(gamePanel.thread)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = thread.hashCode();
+        result = 31 * result + (running ? 1 : 0);
+        result = 31 * result + FPS;
+        result = 31 * result + (int) (targetTime ^ (targetTime >>> 32));
+        result = 31 * result + image.hashCode();
+        result = 31 * result + g.hashCode();
+        result = 31 * result + gsm.hashCode();
+        return result;
+    }
+
+    public static int getScale() {
+        return SCALE;
+    }
+
+    public Thread getThread() {
+        return thread;
+    }
+
+    public void setThread(Thread thread) {
+        this.thread = thread;
+    }
+
+    public boolean isRunning() {
+        return running;
+    }
+
+    public void setRunning(boolean running) {
+        this.running = running;
+    }
+
+    public int getFPS() {
+        return FPS;
+    }
+
+    public void setFPS(int FPS) {
+        this.FPS = FPS;
+    }
+
+    public long getTargetTime() {
+        return targetTime;
+    }
+
+    public void setTargetTime(long targetTime) {
+        this.targetTime = targetTime;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public Graphics2D getG() {
+        return g;
+    }
+
+    public void setG(Graphics2D g) {
+        this.g = g;
+    }
+
+    public GameStateManager getGsm() {
+        return gsm;
+    }
+
+    public void setGsm(GameStateManager gsm) {
+        this.gsm = gsm;
+    }
+
     public void addNotify() {
         super.addNotify();
         if (thread == null) {

@@ -4,6 +4,7 @@ import Main.GamePanel;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.Arrays;
 
 public class MenuState extends GameState {
 
@@ -102,6 +103,72 @@ public class MenuState extends GameState {
     public void keyReleased(int k) {
     }
 
+    @Override
+    public String toString() {
+        return "MenuState{" +
+                "currentChoice=" + currentChoice +
+                ", options=" + Arrays.toString(options) +
+                ", titleFont=" + titleFont +
+                ", font=" + font +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MenuState)) return false;
+
+        MenuState menuState = (MenuState) o;
+
+        if (currentChoice != menuState.currentChoice) return false;
+        if (!font.equals(menuState.font)) return false;
+        if (!Arrays.equals(options, menuState.options)) return false;
+        if (!titleFont.equals(menuState.titleFont)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = currentChoice;
+        result = 31 * result + Arrays.hashCode(options);
+        result = 31 * result + titleFont.hashCode();
+        result = 31 * result + font.hashCode();
+        return result;
+    }
+
+    public int getCurrentChoice() {
+
+        return currentChoice;
+    }
+
+    public void setCurrentChoice(int currentChoice) {
+        this.currentChoice = currentChoice;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public void setOptions(String[] options) {
+        this.options = options;
+    }
+
+    public Font getTitleFont() {
+        return titleFont;
+    }
+
+    public void setTitleFont(Font titleFont) {
+        this.titleFont = titleFont;
+    }
+
+    public Font getFont() {
+        return font;
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
 }
 
 

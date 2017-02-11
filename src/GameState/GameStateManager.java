@@ -1,5 +1,7 @@
 package GameState;
 
+import java.util.Arrays;
+
 public class GameStateManager {
 
     public static final int NUMGAMESTATES = 3;
@@ -17,6 +19,67 @@ public class GameStateManager {
         currentState = MENUSTATE;
         loadState(currentState);
 
+    }
+
+    @Override
+    public String toString() {
+        return "GameStateManager{" +
+                "gameStates=" + Arrays.toString(gameStates) +
+                ", currentState=" + currentState +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof GameStateManager)) return false;
+
+        GameStateManager that = (GameStateManager) o;
+
+        if (currentState != that.currentState) return false;
+        if (!Arrays.equals(gameStates, that.gameStates)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Arrays.hashCode(gameStates);
+        result = 31 * result + currentState;
+        return result;
+    }
+
+    public static int getNumgamestates() {
+
+        return NUMGAMESTATES;
+    }
+
+    public static int getMenustate() {
+        return MENUSTATE;
+    }
+
+    public static int getPlaystate() {
+        return PLAYSTATE;
+    }
+
+    public static int getHelpstate() {
+        return HELPSTATE;
+    }
+
+    public GameState[] getGameStates() {
+        return gameStates;
+    }
+
+    public void setGameStates(GameState[] gameStates) {
+        this.gameStates = gameStates;
+    }
+
+    public int getCurrentState() {
+        return currentState;
+    }
+
+    public void setCurrentState(int currentState) {
+        this.currentState = currentState;
     }
 
     private void loadState(int state) {

@@ -62,4 +62,36 @@ public class HelpState extends GameState {
     public void keyReleased(int k) {
     }
 
+    @Override
+    public String toString() {
+        return "HelpState{" +
+                "font=" + font +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof HelpState)) return false;
+
+        HelpState helpState = (HelpState) o;
+
+        if (!font.equals(helpState.font)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return font.hashCode();
+    }
+
+    public Font getFont() {
+
+        return font;
+    }
+
+    public void setFont(Font font) {
+        this.font = font;
+    }
 }

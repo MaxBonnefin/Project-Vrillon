@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class TileMap {
 
@@ -122,11 +123,11 @@ public class TileMap {
         return tileSize;
     }
 
-    public double getx() {
+    public double getX() {
         return x;
     }
 
-    public double gety() {
+    public double getY() {
         return y;
     }
 
@@ -168,9 +169,230 @@ public class TileMap {
         if (y > ymax) y = ymax;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TileMap)) return false;
+
+        TileMap tileMap = (TileMap) o;
+
+        if (colOffset != tileMap.colOffset) return false;
+        if (height != tileMap.height) return false;
+        if (numCols != tileMap.numCols) return false;
+        if (numColsToDraw != tileMap.numColsToDraw) return false;
+        if (numRows != tileMap.numRows) return false;
+        if (numRowsToDraw != tileMap.numRowsToDraw) return false;
+        if (numTilesAcross != tileMap.numTilesAcross) return false;
+        if (rowOffset != tileMap.rowOffset) return false;
+        if (tileSize != tileMap.tileSize) return false;
+        if (Double.compare(tileMap.tween, tween) != 0) return false;
+        if (width != tileMap.width) return false;
+        if (Double.compare(tileMap.x, x) != 0) return false;
+        if (xmax != tileMap.xmax) return false;
+        if (xmin != tileMap.xmin) return false;
+        if (Double.compare(tileMap.y, y) != 0) return false;
+        if (ymax != tileMap.ymax) return false;
+        if (ymin != tileMap.ymin) return false;
+        if (!tileset.equals(tileMap.tileset)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(x);
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(y);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + xmin;
+        result = 31 * result + ymin;
+        result = 31 * result + xmax;
+        result = 31 * result + ymax;
+        temp = Double.doubleToLongBits(tween);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + tileSize;
+        result = 31 * result + numRows;
+        result = 31 * result + numCols;
+        result = 31 * result + width;
+        result = 31 * result + height;
+        result = 31 * result + tileset.hashCode();
+        result = 31 * result + numTilesAcross;
+        result = 31 * result + rowOffset;
+        result = 31 * result + colOffset;
+        result = 31 * result + numRowsToDraw;
+        result = 31 * result + numColsToDraw;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "TileMap{" +
+                "x=" + x +
+                ", y=" + y +
+                ", xmin=" + xmin +
+                ", ymin=" + ymin +
+                ", xmax=" + xmax +
+                ", ymax=" + ymax +
+                ", tween=" + tween +
+                ", map=" + Arrays.toString(map) +
+                ", tileSize=" + tileSize +
+                ", numRows=" + numRows +
+                ", numCols=" + numCols +
+                ", width=" + width +
+                ", height=" + height +
+                ", tileset=" + tileset +
+                ", numTilesAcross=" + numTilesAcross +
+                ", tiles=" + Arrays.toString(tiles) +
+                ", rowOffset=" + rowOffset +
+                ", colOffset=" + colOffset +
+                ", numRowsToDraw=" + numRowsToDraw +
+                ", numColsToDraw=" + numColsToDraw +
+                '}';
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public int getXmin() {
+        return xmin;
+    }
+
+    public void setXmin(int xmin) {
+        this.xmin = xmin;
+    }
+
+    public int getYmin() {
+        return ymin;
+    }
+
+    public void setYmin(int ymin) {
+        this.ymin = ymin;
+    }
+
+    public int getXmax() {
+        return xmax;
+    }
+
+    public void setXmax(int xmax) {
+        this.xmax = xmax;
+    }
+
+    public int getYmax() {
+        return ymax;
+    }
+
+    public void setYmax(int ymax) {
+        this.ymax = ymax;
+    }
+
+    public double getTween() {
+        return tween;
+    }
+
+    public int[][] getMap() {
+        return map;
+    }
+
+    public void setMap(int[][] map) {
+        this.map = map;
+    }
+
+    public void setTileSize(int tileSize) {
+        this.tileSize = tileSize;
+    }
+
+    public int getNumRows() {
+        return numRows;
+    }
+
+    public void setNumRows(int numRows) {
+        this.numRows = numRows;
+    }
+
+    public int getNumCols() {
+        return numCols;
+    }
+
+    public void setNumCols(int numCols) {
+        this.numCols = numCols;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public BufferedImage getTileset() {
+        return tileset;
+    }
+
+    public void setTileset(BufferedImage tileset) {
+        this.tileset = tileset;
+    }
+
+    public int getNumTilesAcross() {
+        return numTilesAcross;
+    }
+
+    public void setNumTilesAcross(int numTilesAcross) {
+        this.numTilesAcross = numTilesAcross;
+    }
+
+    public Tile[][] getTiles() {
+        return tiles;
+    }
+
+    public void setTiles(Tile[][] tiles) {
+        this.tiles = tiles;
+    }
+
+    public int getRowOffset() {
+        return rowOffset;
+    }
+
+    public void setRowOffset(int rowOffset) {
+        this.rowOffset = rowOffset;
+    }
+
+    public int getColOffset() {
+        return colOffset;
+    }
+
+    public void setColOffset(int colOffset) {
+        this.colOffset = colOffset;
+    }
+
+    public int getNumRowsToDraw() {
+        return numRowsToDraw;
+    }
+
+    public void setNumRowsToDraw(int numRowsToDraw) {
+        this.numRowsToDraw = numRowsToDraw;
+    }
+
+    public int getNumColsToDraw() {
+        return numColsToDraw;
+    }
+
+    public void setNumColsToDraw(int numColsToDraw) {
+        this.numColsToDraw = numColsToDraw;
+    }
+
+    public void setY(double y) {
+
+        this.y = y;
+    }
+
     public void draw(Graphics2D g) {
 
         for (
+
                 int row = rowOffset;
                 row < rowOffset + numRowsToDraw;
                 row++) {
