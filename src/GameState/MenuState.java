@@ -98,6 +98,18 @@ public class MenuState extends GameState {
                 currentChoice = 0;
             }
         }
+        if (k == KeyEvent.VK_W) {
+            currentChoice--;
+            if (currentChoice == -1) {
+                currentChoice = options.length - 1;
+            }
+        }
+        if (k == KeyEvent.VK_S) {
+            currentChoice++;
+            if (currentChoice == options.length) {
+                currentChoice = 0;
+            }
+        }
     }
 
     public void keyReleased(int k) {
