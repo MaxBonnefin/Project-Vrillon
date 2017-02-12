@@ -38,16 +38,6 @@ public class Player extends GameObject {
         }
     }
 
-    @Override
-    public void calculateKnockback(double newAngle, int i) {
-
-    }
-
-    @Override
-    public void hit(int slashDamage) {
-
-    }
-
     private void getNextPosition(){
         //movement
         if(left){
