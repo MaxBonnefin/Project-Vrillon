@@ -18,10 +18,10 @@ public class Player extends GameObject {
 
     public Player(TileMap tm) {
         super(tm);
-        width = 50;
-        height = 50;
-        collisionWidth = 50;
-        collisionHeight = 50;
+        width = 25;
+        height = 25;
+        collisionWidth = 25;
+        collisionHeight = 25;
 
         moveSpeed = 0.4;
         maxSpeed = 1.8;
